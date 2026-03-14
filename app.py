@@ -200,15 +200,11 @@ def analyze():
         # Actor: apify/facebook-posts-scraper
         raw_items = run_apify_actor(
             token=token,
-            actor_id="apify/facebook-scraper",
+            actor_id="apify/facebook-comments-scraper",
             input_data={
-                "startUrls": [{"url": url}],
-                "maxPosts": 1,
-                "maxPostComments": max_p,
-                "maxPostReactions": max_p,
-                "scrapeAbout": True,
-                "scrapeReactions": True,
-                "scrapeComments": True,
+                "postUrls": [url],
+                "maxComments": max_p,
+                "includeNestedComments": True,
             },
             timeout=180
         )
