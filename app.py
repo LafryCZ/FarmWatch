@@ -202,9 +202,8 @@ def analyze():
             token=token,
             actor_id="apify~facebook-comments-scraper",
             input_data={
-                "postUrls": [url],
+                "startUrls": [{"url": url}],
                 "maxComments": max_p,
-                "includeNestedComments": True,
             },
             timeout=180
         )
