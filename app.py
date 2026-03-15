@@ -20,9 +20,11 @@ APIFY_BASE = "https://api.apify.com/v2"
 # ──────────────────────────────────────────────
 
 def get_token():
-    """Token z env proměnné nebo z requestu."""
-    return request.json.get("apifyToken") or os.environ.get("APIFY_TOKEN", "")
-
+    from_request = request.json.get("apifyToken", "") if request.json else ""
+    from_env = os.environ.get("APIFY_TOKEN", "")
+    token = from_request or from_env
+    print(f"DEBUG: request_token='{from_request[:8] if from_request else 'EMPTY'}' env_token='{from_env[:8] if from_env else 'EMPTY'}' using='{token[:8] if token else 'EMPTY'}'", flush=True)
+    return token
 
 def compute_score(profile: dict) -> int:
     """
