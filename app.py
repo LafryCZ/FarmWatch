@@ -3,6 +3,7 @@ FarmWatch — Python backend
 Napojuje se na Apify API a vrací ohodnocené profily.
 """
 
+import json
 import os
 import time
 import re
