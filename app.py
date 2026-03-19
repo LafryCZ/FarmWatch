@@ -136,6 +136,9 @@ def run_apify_actor(token: str, actor_id: str, input_data: dict, timeout: int = 
 
 
 def parse_fb_profiles(raw_items: list) -> list:
+    if raw_items:
+        print("SAMPLE ITEM:", json.dumps(raw_items[0], ensure_ascii=False)[:500], flush=True)
+        
     """
     Převede raw data z Apify Facebook scraperu
     do formátu pro naši analýzu.
